@@ -46,12 +46,12 @@ export default defineConfig({
     {
       name: "Critical Sanity",
       testMatch: ["tests/Critical Sanity/**/*.test.ts"],
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: { ...devices["Desktop Edge"], channel: "msedge" },
     },
     {
       name: "Smoke Sanity",
       testMatch: ["tests/Smoke Sanity/**/*.test.ts"],
-      use: { ...devices["Desktop Chrome"], channel: "chrome" },
+      use: { ...devices["Desktop Edge"], channel: "msedge" },
     },
   ],
 });
