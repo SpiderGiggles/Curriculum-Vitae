@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { defineConfig, devices } from "@playwright/test";
 
 export default defineConfig({
@@ -31,7 +32,7 @@ export default defineConfig({
     baseURL: process.env.BASE_URL ?? "https://practicesoftwaretesting.com/",
     screenshot: { mode: "only-on-failure", fullPage: true },
     trace: {
-      mode: "retain-on-failure",
+      mode: "retain-on-first-failure",
       snapshots: true,
       screenshots: true,
       sources: true,

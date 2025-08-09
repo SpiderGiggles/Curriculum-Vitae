@@ -2,30 +2,34 @@
   "name": "cristian-automation",
   "version": "1.0.0",
   "private": true,
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "playwright test",
     "test:critical": "playwright test --project='Critical Sanity'",
     "test:smoke": "playwright test --project='Smoke Sanity'",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
+    "trace": "playwright show-trace",
     "lint": "eslint . --ext .ts",
     "format": "prettier . --write",
     "prepare": "husky"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.2",
-    "typescript": "^5.4.0",
     "@types/node": "^20.12.0",
-    "eslint": "^8.57.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "eslint-plugin-playwright": "^1.6.2",
+    "dotenv": "^17.2.1",
+    "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.2.5",
-    "monocart-reporter": "^2.9.21",
+    "eslint-plugin-playwright": "^1.6.2",
     "husky": "^9.0.0",
-    "lint-staged": "^15.2.0"
+    "lint-staged": "^15.2.0",
+    "monocart-reporter": "^2.9.21",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.0"
   },
   "lint-staged": {
     "*.ts": [

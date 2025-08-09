@@ -1,9 +1,16 @@
-export interface UserCredentials {
+export interface userCredentials {
   email: string;
   password: string;
 }
 
-export const getUserCredentials = (): UserCredentials => ({
-  email: process.env.USER_EMAIL ?? "demo@example.com",
-  password: process.env.USER_PASSWORD ?? "Password123!",
-});
+export interface registerData {
+  firstName: string;
+  lastName: string;
+  dob: string;       // YYYY-MM-DD
+  street: string;
+  postcode: string;
+  city: string;
+  state: string;
+  country: string;
+  phone: string;
+}

@@ -1,0 +1,16 @@
+[
+    {
+        "name": "local",
+        "testData": {
+            "firstName": "QA",
+            "lastName": "User",
+            "dob": "1990-01-01",
+            "street": "123 Test St",
+            "postcode": "10001",
+            "city": "Test City",
+            "state": "Test State",
+            "country": "Yemen",
+            "phone": "5551234567"
+        }
+      }
+]
