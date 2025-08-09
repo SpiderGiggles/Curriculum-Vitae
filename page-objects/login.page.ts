@@ -13,8 +13,23 @@ export class LoginPage {
     return this;
   }
 
-  async signIn(creds: UserCredentials): Promise<LoginPage> {
+  public async signIn(creds: UserCredentials): Promise<LoginPage> {
     
+    await this.page.locator('[data-test="email"]').click();
+    await this.page.locator('[data-test="email"]').fill(creds.email);
+    await this.page.locator('[data-test="password"]').click();
+    await this.page.locator('[data-test="password"]').fill(creds.password);
+    
+    const [loginRes] = await Promise.all([
+      this.page.waitForResponse(res =>
+        res.url().includes("/users/login") &&
+        res.request().method() === "POST"
+      ),
+      this.page.locator('[data-test="login-submit"]').click(),
+    ]);
+
+    await expect(loginRes.ok()).toBeTruthy();
+
     return this;
   }
 }
