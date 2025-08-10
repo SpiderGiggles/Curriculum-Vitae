@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { userCredentials } from "../../test-data/testdata";
 import { LoginPage } from "../../page-objects/login.page";
 import testDataJson from "../../test-data/testdata.json";
+import { userCredentials } from "../../test-data/testdata";
 
 // Global variable to store generated credentials for the test chain
 let generatedCredentials: userCredentials;
