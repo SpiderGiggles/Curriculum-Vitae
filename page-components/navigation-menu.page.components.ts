@@ -8,7 +8,7 @@ class NavigationMenuActions {
   }
 
   async isCategoriesDropdownVisible(): Promise<boolean> {
-    const dropdown = await this.page.locator('[data-test="nav-categories"]');
+    const dropdown = await this.page.locator('[aria-label="nav-categories"]');
     return dropdown.isVisible();
   }
 
@@ -18,7 +18,7 @@ class NavigationMenuActions {
   }
 
   async isUserMenuVisible(): Promise<boolean> {
-    const dropdown = await this.page.locator('[data-test="nav-menu"]');
+    const dropdown = await this.page.locator('[aria-labelledby="menu"]');
     return dropdown.isVisible();
   }
 
@@ -68,7 +68,7 @@ export class NavigationMenu {
 
   async selectLanguage(languageCode: "DE" | "EN" | "ES" | "FR" | "NL" | "TR") {
     await this.actions.openLanguageDropdown();
-    const locator = await this.actions.page.locator('[aria-labelledby="language"]')
+    const locator = await this.actions.page.locator('[aria-labelledby="language"]');
     await locator.filter({ hasText: languageCode}).click();
     await expect(locator).not.toBeVisible();
   }
