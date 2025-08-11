@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { expect, Page } from "@playwright/test";
 import { NavigationMenu } from "../page-components/navigation-menu.page.components";
 
 class HomePageActions {
@@ -62,17 +62,22 @@ class HomePageActions {
     await this.page.waitForLoadState('networkidle');
   }
 
-  async selectCategoryCheckbox(value: string) {
-    // const checkbox = this.page.locator('[data-test="category-01K2AJ7P27TKS2QX2VVX8KQFC3"]');
-    const checkbox = this.page.locator(`input[type="checkbox"][value="${value}"]`);
+  async selectCategoryCheckbox(cateogryName: string) {
+    const checkbox = this.page.locator(`input[type="checkbox"][value="${cateogryName}"]`);
     await checkbox.check();
     await this.page.waitForLoadState('networkidle');
   }
 
-  async unselectCategoryCheckbox(value: string) {
-    const checkbox = this.page.locator(`input[type="checkbox"][value="${value}"]`);
+  async unselectCategoryCheckbox(cateogryName: string) {
+    const checkbox = this.page.locator(`input[type="checkbox"][value="${cateogryName}"]`);
     await checkbox.check();
     await this.page.waitForLoadState('networkidle');
+  }
+
+  async selectProduct(productName: string) {
+    const card = this.page.locator(`.card:has(h5[data-test='product-name']:has-text("${productName}"))`);
+    await card.click();
+    await expect(this.page).toHaveURL(/\/product/);
   }
 }
 
@@ -139,6 +144,10 @@ export class HomePage {
   }
 
   async clearSearch() {
-    await this.actions.clearSearchField();
+    return this.actions.clearSearchField();
+  }
+
+  async selectSpecificProduct(productSpecificName: string) {
+    return this.actions.selectProduct(productSpecificName);
   }
 }

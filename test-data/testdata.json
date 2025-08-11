@@ -1,16 +1,40 @@
 [
-    {
-        "name": "local",
-        "testData": {
-            "firstName": "QA",
-            "lastName": "User",
-            "dob": "1990-01-01",
-            "street": "123 Test St",
-            "postcode": "10001",
-            "city": "Test City",
-            "state": "Test State",
-            "country": "Yemen",
-            "phone": "5551234567"
-        }
-      }
+  {
+    "name": "local",
+    "testData": {
+      "firstName": "QA",
+      "lastName": "User",
+      "dob": "1990-01-01",
+      "street": "123 Test St",
+      "postcode": "10001",
+      "city": "Test City",
+      "state": "Test State",
+      "country": "Yemen",
+      "phone": "5551234567"
+    }
+  },
+  {
+    "name": "products",
+    "testData": {
+      "cb": "Combination Pliers",
+      "pliers": "Pliers",
+      "bc": "Bolt Cutters",
+      "lnp": "Long Nose Pliers",
+      "th": "Thor Hammer",
+      "sledge": "Sledgehammer",
+      "ch": "Court Hammer",
+      "ps": "Phillips Screwdriver",
+      "m4": "M4 Nuts"
+    }
+  },
+  {
+    "name": "checkboxSelection",
+    "testData": {
+      "ht": "Hand Tools",
+      "pt": "Power Tools",
+      "other": "Other",
+      "fft": "ForgeFlex Tools",
+      "mch": "MightyCraft Hardware"
+    }
+  }
 ]
