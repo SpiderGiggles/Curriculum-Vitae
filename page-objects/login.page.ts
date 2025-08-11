@@ -1,7 +1,7 @@
 import { expect, type Page } from "@playwright/test";
 import type { userCredentials, registerData } from "../test-data/testdata";
 import { compliantEmail, compliantPassword } from "../utils/string-utils";
-import { NavigationMenu } from "../page-components/navigation-menu.page.components";
+
 
 class LoginPageActions {
   readonly page: Page;
@@ -33,11 +33,9 @@ class LoginPageActions {
 
 export class LoginPage {
   private actions: LoginPageActions;
-  readonly navigation: NavigationMenu;
 
   constructor(page: Page) {
     this.actions = new LoginPageActions(page);
-    this.navigation = new NavigationMenu(page);
   }
 
   async goToLoginPage(): Promise<LoginPage> {

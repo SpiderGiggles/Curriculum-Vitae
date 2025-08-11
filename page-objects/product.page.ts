@@ -1,5 +1,4 @@
 import { expect, Page } from "@playwright/test";
-import { NavigationMenu } from "../page-components/navigation-menu.page.components";
 
 class ProductPageActions {
   readonly page: Page;
@@ -11,6 +10,7 @@ class ProductPageActions {
   async clickAddToCart() {
     const addToCart = await this.page.locator('[data-test="add-to-cart"]');
     await addToCart.click();
+    await this.page.waitForLoadState("networkidle");
     return this.page.waitForResponse(
       (Response) =>
         Response.url().includes("/carts/") &&
@@ -35,18 +35,18 @@ class ProductPageActions {
 
 export class ProductPage {
   private actions: ProductPageActions;
-  readonly navigation: NavigationMenu;
 
   constructor(page: Page) {
     this.actions = new ProductPageActions(page);
-    this.navigation = new NavigationMenu(page);
   }
 
-  async clickAddToCart() {
-    return await this.actions.clickAddToCart();
+  async clickAddToCart(): Promise<ProductPage> {
+    await this.actions.clickAddToCart();
+    return this;
   }
 
-  async clickFavourites() {
-    return await this.actions.clickFavourites();
+  async clickFavourites(): Promise<ProductPage>  {
+    await this.actions.clickFavourites();
+    return this;
   }
 }
