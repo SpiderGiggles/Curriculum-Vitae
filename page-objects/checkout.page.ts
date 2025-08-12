@@ -15,6 +15,7 @@ class CheckoutPageActions {
     async secondCheckOutButton() {
         const checkOutButton = await this.page.locator('[data-test="proceed-2"]');
         await checkOutButton.click();
+        
     }
 
     async thirdCheckOutButton() {
@@ -22,10 +23,22 @@ class CheckoutPageActions {
         await checkOutButton.click();
     }
 
-    async isPaymentDropdownVisible(): Promise<boolean> {
-        const dropdown = await this.page.locator('[aria-label="nav-categories"]');
-        return dropdown.isVisible();
-      }
+    async clickPaymentDropDown() {
+        const dropdown = await this.page.locator('[data-test="payment-method"]');
+        await dropdown.click();
+        await dropdown.selectOption('cash-on-delivery');
+    }
+
+    async clickConfirm() {
+        const confirmButton = await this.page.locator('[data-test="finish"]');
+        await confirmButton.click();
+        await this.page.waitForResponse(
+            (Response) =>
+              Response.url().includes("/payment/check") &&
+              Response.request().method() == "POST" &&
+              Response.status() == 200
+          );
+    }
 }
 
 export class CheckoutPage {
@@ -42,6 +55,8 @@ export class CheckoutPage {
         await this.actions.page.waitForLoadState("networkidle");
         await this.actions.thirdCheckOutButton();
         await this.actions.page.waitForLoadState("networkidle");
+        await this.actions.clickPaymentDropDown();
+        await this.actions.clickConfirm();
         return this;
     }
 }
